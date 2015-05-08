@@ -2726,6 +2726,77 @@ h6 {
     background-position: 0 0;
   }
 }
+/* ---------- pgbar ------------------------------------------------- */
+#pgbar {
+  float: right;
+}
+#pgbar .thermometer {
+  font-size: 1.22222222em;
+  font-size: 1.22222222rem;
+  line-height: 1.13636364em;
+  margin-bottom: 1.13636364em;
+  font-family: "KG Small Town Southern Girl", cursive;
+  font-weight: normal;
+  font-style: normal;
+  position: relative;
+  color: white;
+  width: 100%;
+  max-width: 420px;
+}
+#pgbar .thermometer .t_pre {
+  width: 20px;
+  background: url('../images/pgbar_filling_roundend_left.png') no-repeat top left;
+  position: absolute;
+  height: 42px;
+  text-indent: -9999px;
+  left: 0px;
+  bottom: 0;
+  margin: 3px 0;
+}
+#pgbar .thermometer .t_post {
+  width: 20px;
+  background: url('../images/pgbar_filling_roundend_right.png') no-repeat top left;
+  position: absolute;
+  height: 42px;
+  text-indent: -9999px;
+  right: 0px;
+  bottom: 0;
+  margin: 3px 0;
+  z-index: 100;
+}
+#pgbar .thermometer .t_body {
+  max-width: 420px;
+  border: none;
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+  background: url('../images/pgbar_bg_right.png') no-repeat top right, url('../images/pgbar_bg_middle.png') repeat top left;
+}
+#pgbar .thermometer .t_body .t_current {
+  height: 52px;
+  margin-top: -3px;
+  position: absolute;
+  color: #3E6FA2;
+  text-indent: -9999px;
+  background: none;
+  width: 6px;
+  z-index: 10;
+}
+#pgbar .thermometer .t_level {
+  width: 0%;
+  float: left;
+  overflow: hidden;
+  height: 42px;
+  margin: 3px 0;
+  background: url('../images/pgbar_filling.png') no-repeat -30px top;
+}
+#pgbar .thermometer.somewhere-before .t_body .t_current {
+  background: url('../images/pgbar_end.png') no-repeat top left;
+}
+#pgbar .thermometer .t_target_pointer,
+#pgbar .thermometer .t_msg {
+  color: black;
+}
 /* ---------- main -------------------------------------------------- */
 #main {
   overflow: visible;
@@ -2795,6 +2866,7 @@ h6 {
 .eaFormField,
 .eaSwitchSubjectContainer,
 .eaMessageContentContainer,
+.eaMessageSignoffContainer,
 .eaQuestionTextareaFormFieldContainer,
 .textarea-wrapper {
   position: relative;
@@ -2804,6 +2876,7 @@ h6 {
 .borderimage .eaFormField,
 .borderimage .eaSwitchSubjectContainer,
 .borderimage .eaMessageContentContainer,
+.borderimage .eaMessageSignoffContainer,
 .borderimage .eaQuestionTextareaFormFieldContainer,
 .borderimage .textarea-wrapper {
   border-style: solid;
@@ -2818,6 +2891,7 @@ h6 {
 .no-borderimage .eaFormField,
 .no-borderimage .eaSwitchSubjectContainer,
 .no-borderimage .eaMessageContentContainer,
+.no-borderimage .eaMessageSignoffContainer,
 .no-borderimage .eaQuestionTextareaFormFieldContainer,
 .no-borderimage .textarea-wrapper {
   border: 4px solid #d8dbdd;
@@ -3035,9 +3109,6 @@ textarea,
 .eaMessagecontent {
   font-size: 100%;
   min-height: 10em;
-}
-.eaMessageSignoffContainer {
-  display: none;
 }
 /* ---------- checkbox & radio -------------------------------------- */
 input[type="checkbox"] {
@@ -3289,6 +3360,7 @@ label,
   list-style-type: none;
 }
 #eaerrors {
+  display: none;
   position: relative;
   padding: 1.38888889em 4%;
   color: #ffffff;
@@ -3310,6 +3382,14 @@ label,
 }
 #eaerrors a:after {
   content: ":";
+}
+#eaerrors h1,
+#eaerrors h2,
+#eaerrors h3 {
+  color: #ffffff;
+}
+#eaerrors li {
+  margin-bottom: 0;
 }
 /* ==================================================================
  * contact lists

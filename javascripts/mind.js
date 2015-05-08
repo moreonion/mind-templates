@@ -1,14 +1,17 @@
 $(window).load(function(){
-  // two column layout
-  sortTwoColumn();
-  $('.eaSubmitResetButtonGroup').appendTo($('.en_right_wrapper').last());
-  $('body').addClass('twocolumn');
 
-  // put right column before left column
-  $('.en_left_wrapper').each(function(){
-    var id = $(this).attr('id').match(/[0-9]+$/);
-    $(this).before($('#right_wrapper' + id[0]));
-  });
+  // two column layout
+  if ($('.eaRightColumnContent').length && $('.eaLeftColumnContent').length) {
+    sortTwoColumn();
+    $('.eaSubmitResetButtonGroup').appendTo($('.en_right_wrapper').last());
+    $('body').addClass('twocolumn');
+
+    // put right column before left column
+    $('.en_left_wrapper').each(function(){
+      var id = $(this).attr('id').match(/[0-9]+$/);
+      $(this).before($('#right_wrapper' + id[0]));
+    });
+  }
 
   // enable Picker and Selector
   // see http://www.benplum.com/formstone/
@@ -24,7 +27,7 @@ $(window).load(function(){
   // * move all mandatory field marker inside the label
   $('textarea').each(function() {
     var $parents = $('.eaFormField, .eaSwitchSubjectContainer, .eaMessageContentContainer, .eaQuestionTextareaFormFieldContainer, .textarea-wrapper');
-    if ($(this).parent().not($parents)) {
+    if (!$(this).parent($parents)) {
       $(this).wrap("<div class='textarea-wrapper'></div>");
     }
   });
@@ -44,10 +47,14 @@ $(window).load(function(){
   });
 
   // add class to field where error occured
+  // and show error message container
   $(window).on('DOMSubtreeModified', '.eaErrorMessage', function(e) {
     var self = $(e.target);
     if (!self.is(':empty')) {
       self.closest('.eaFormField').addClass('validationError');
+    }
+    if (!/[\S]/.test($('#eaerrors').html())) {
+      $('#eaerrors').show();
     }
   });
 

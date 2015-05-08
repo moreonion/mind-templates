@@ -19,7 +19,8 @@
 			'initialValue':0,
 			'targetDataColumn': undefined,
 			'service':'EaEmailAOTarget', // Accepts 'EaEmailAOTarget' or 'NetDonor'
-			'currencySymbol':'' // only required for NetDonor (&#163; = £)
+			'currencySymbol':'', // only required for NetDonor (&#163; = £)
+			'almostDonePercentage':95
 		}
 		
 		//necessary for thousands format
@@ -39,7 +40,7 @@
 			if(settings.dataUrl.length){
 				dataUrl = settings.dataUrl;
 			}else{
-				dataUrl = '//e-activist.com/ea-dataservice/data.service?service=' + settings.service + '&resultType=summary&contentType=json&token=' + settings.token + '&campaignId=' + settings.campaignId + '&callback=?';
+				dataUrl = 'http://e-activist.com/ea-dataservice/data.service?service=' + settings.service + '&resultType=summary&contentType=json&token=' + settings.token + '&campaignId=' + settings.campaignId + '&callback=?';
 			}
 			
 			//get the data and iterate through it
@@ -79,6 +80,16 @@
 				//reset to 100% if over 100%
 				if(levelFinalWidthPercentage > 100) levelFinalWidthPercentage=100;
 				var levelFinalWidthPx =  Math.ceil(parseInt(levelFinalWidthPercentage) / 100 * thermBodyWidth /1);
+				
+				if(levelFinalWidthPercentage > 99) {
+					$this.addClass('done');
+				}
+				else if(levelFinalWidthPercentage > settings.almostDonePercentage) {
+					$this.addClass('almost-done');
+				}
+				else {
+					$this.addClass('somewhere-before');
+				}
 				
 				if(levelFinalWidthPx < (thermBodyWidth / 2)){
 					//put total next to level it if there is space
