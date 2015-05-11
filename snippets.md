@@ -24,6 +24,7 @@ This makes your videos responsive, so they will always fit on the screen (even o
     …
   </div>
 </div>
+```
 
 ## content in purple box
 
@@ -83,15 +84,20 @@ Place this snippet on the thankyou page:
 
 ## background scribbles
 
+```html
 <div class="scribble">
   <img src="//moreonion.github.io/mind-templates/images/Illustration_mouse.png" />
 </div>
+```
 
 adds a mouse to the bottom right of any page on screens >= 780px.
+
 For a megphone use this:
 
+```html
 <div class="scribble">
   <img src="//moreonion.github.io/mind-templates/images/Illustration_megaphone.png" />
 </div>
+```
 
 You can also use any other image you like inside the div, just make sure it has the right background colors.
