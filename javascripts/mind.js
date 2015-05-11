@@ -3,14 +3,18 @@ $(window).load(function(){
   // two column layout
   if ($('.eaRightColumnContent').length && $('.eaLeftColumnContent').length) {
     sortTwoColumn();
-    $('.eaSubmitResetButtonGroup').appendTo($('.en_right_wrapper').last());
     $('body').addClass('twocolumn');
 
-    // put right column before left column
-    $('.en_left_wrapper').each(function(){
-      var id = $(this).attr('id').match(/[0-9]+$/);
-      $(this).before($('#right_wrapper' + id[0]));
-    });
+    // if form in right column:
+    // * move submit button to right column
+    // * put right column before left column
+    if ($('.eaRightColumnContent .eaFormField').length) {
+      $('.eaSubmitResetButtonGroup').appendTo($('.en_right_wrapper').last());
+      $('.en_left_wrapper').each(function(){
+        var id = $(this).attr('id').match(/[0-9]+$/);
+        $(this).before($('#right_wrapper' + id[0]));
+      });
+    }
   }
 
   // enable Picker and Selector
