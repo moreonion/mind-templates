@@ -101,3 +101,37 @@ For a megphone use this:
 ```
 
 You can also use any other image you like inside the div, just make sure it has the right background colors.
+
+## pgbar
+
+The progressbar markup code is in the header template already. You could set
+template-wide values for targets by using `data-target` and `data-start`
+attributes.
+These template-wide values can be overriden by campaign-specific values
+(recommended, see below).
+
+```html
+<div id="pgbar">
+  <div class="thermometer" data-target="2500" data-start="0">
+    <span class="t_current">0</span> people have taken action already.
+    <div class="t_body">
+      <div class="t_level"></div><span class="t_current"></span>
+    </div>
+    <div class="t_pre">.</div>
+    <div class="t_post">.</div>
+  </div>
+</div>
+```
+
+```html
+<input type="hidden" name="pgbar-config-target" value="1000">
+<input type="hidden" name="pgbar-config-start" value="0">
+```
+
+Put this in a copy block on the first page of a campaign to set the target (and
+starting value) of the progress bar. Both are optional -- there are defaults
+which get loaded if these are not set.
+
+The values here are remembered by the browser until you close the tab. So if
+you want to check if an update of this values is applied you have to close your
+current tab and open it again (to start a new session).

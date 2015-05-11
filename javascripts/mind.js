@@ -77,4 +77,83 @@ $(window).load(function(){
     return false;
   });
 
+  // function to read and return the pgbar config
+  function thermoConfig(el) {
+    var campaignId = $('input[name="ea.campaign.id"]').val();
+    if (!campaignId) {
+      return null;
+    }
+    var storageKey = 'pgbar-config-' + campaignId;
+    var storedConfig = JSON.parse(sessionStorage.getItem(storageKey))
+    var config = {};
+    var defaults = {
+      campaignId: campaignId, // reload on every page, not saved
+      '$el': $(el), // reload on every page, not saved
+      start: 0, // overridable by config copy block
+      target: 250, // overridable by config copy block
+      service: 'EaEmailAOTarget' // overridable by config copy block
+    };
+    if (storedConfig) {
+      config = $.extend(defaults, storedConfig);
+    } else {
+      config = $.extend(defaults, {});
+      var dataTarget = config['$el'].data('target');
+      if (typeof dataTarget !== 'undefined') {
+        var parsedTarget = parseInt(dataTarget, 10);
+        if (!isNaN(parsedTarget) && parsedTarget > 0) {
+          config['target'] = parsedTarget;
+        }
+      }
+      var dataStart = config['$el'].data('start');
+      if (typeof dataStart !== 'undefined') {
+        var parsedStart = parseInt(dataStart, 10);
+        if (!isNaN(parsedStart) && parsedStart > 0) {
+          config['start'] = parsedTarget;
+        }
+      }
+      var dataService = config['$el'].data('service');
+      if (typeof dataService !== 'undefined') {
+        if (dataService == 'NetDonor' || dataService == 'EaEmailAOTarget') {
+          config['service'] = dataService;
+        }
+      }
+
+      // check for config copy block
+      var copyBlockConfig = {};
+      if ($('input[name="pgbar-config-target"]').length > 0) {
+        copyBlockConfig['target'] = $('input[name="pgbar-config-target"]').val();
+      }
+      if ($('input[name="pgbar-config-start"]').length > 0) {
+        copyBlockConfig['start'] = $('input[name="pgbar-config-start"]').val();
+      }
+      if ($('input[name="pgbar-config-service"]').length > 0) {
+        copyBlockConfig['service'] = $('input[name="pgbar-config-service"]').val();
+      }
+      $.extend(config, copyBlockConfig);
+
+      // do not store el and campaignId
+      // these have to be fresh
+      // whitelist: start, target, service
+      var configToStore = {
+        start: config['start'],
+        target: config['target'],
+        service: config['service']
+      }
+      sessionStorage.setItem(storageKey, JSON.stringify(configToStore))
+    }
+
+    return config;
+  }
+
+  // get pgbar config, initialize it
+  var thConfig = thermoConfig('#pgbar .thermometer');
+  thConfig['$el'].eActivistThermometer({
+    token: "c5ffb7dd-de95-4ed2-9371-55e11b7db1e0",
+    campaignId: thConfig['campaignId'],
+    target: thConfig['target'],
+    initialValue: thConfig['start'],
+    service: thConfig['service'],
+    targetDataColumn: 'participatingSupporters'
+  });
+
 });

@@ -2812,6 +2812,7 @@ h6 {
 }
 #pgbar .thermometer .t_level {
   width: 0%;
+  min-width: 12px;
   float: left;
   overflow: hidden;
   height: 42px;
