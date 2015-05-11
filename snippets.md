@@ -35,6 +35,14 @@ To get a purple background (e.g. for the heading above the form), put its conten
 </div>
 ```
 
+An additional class adds a flower scribble to the top right corner:
+
+```html
+<div class="box with-flower">
+  <h2>Heading</h2>
+</div>
+```
+
 ## background info
 
 * the class `.info-toggle` on the element enables the "show more info" logic
@@ -72,3 +80,18 @@ Place this snippet on the thankyou page:
 ```html
 <input type="hidden" name="track-submission" value="1">
 ```
+
+## background scribbles
+
+<div class="scribble">
+  <img src="//moreonion.github.io/mind-templates/images/Illustration_mouse.png" />
+</div>
+
+adds a mouse to the bottom right of any page on screens >= 780px.
+For a megphone use this:
+
+<div class="scribble">
+  <img src="//moreonion.github.io/mind-templates/images/Illustration_megaphone.png" />
+</div>
+
+You can also use any other image you like inside the div, just make sure it has the right background colors.

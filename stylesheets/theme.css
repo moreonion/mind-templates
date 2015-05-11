@@ -2667,8 +2667,10 @@ h6 {
 /* ---------- text on purple background ----------------------------- */
 .box {
   background-color: #844393;
+  position: relative;
   /* scaling background image */
   /* fallback for IE8 */
+  /* arrow scribble */
 }
 .box,
 .box h1,
@@ -2697,6 +2699,32 @@ h6 {
   border: 4px solid #ffffff;
   padding: 1.38888889em 1.5em 0;
   margin: 1.38888889em -4px;
+}
+@media screen and (min-width: 780px) {
+  .box:after {
+    content: "";
+    display: block;
+    background: url('../images/arrow_scribble.png') no-repeat transparent;
+    position: absolute;
+    width: 60px;
+    height: 160px;
+    right: 100%;
+    bottom: -80px;
+  }
+  .no-backgroundsize .box:after {
+    right: 105%;
+  }
+}
+.box.with-flower {
+  /* multiple background images */
+  /* fallback for IE8 */
+}
+.multiplebgs .box.with-flower {
+  background: url('../images/heading_bg_flower.png') no-repeat 95% 25%, url('../images/heading_bg.png') #844393;
+  background-size: auto auto, 100% 100%;
+}
+.no-multiplebgs .box.with-flower {
+  background: url('../images/heading_bg_flower.png') no-repeat 97% 15% #844393;
 }
 .en_left_wrapper div:first-child .box,
 .en_right_wrapper div:first-child .box {
@@ -2817,6 +2845,22 @@ h6 {
 @media screen and (min-width: 780px) {
   .twocolumn .en_left_wrapper {
     width: 48%;
+  }
+}
+/* background scribbles */
+.scribble {
+  display: none;
+  position: absolute;
+  z-index: -10;
+  right: -40%;
+  bottom: -2.77777778em;
+}
+.twocolumn .scribble {
+  right: 0;
+}
+@media screen and (min-width: 780px) {
+  .scribble {
+    display: block;
   }
 }
 /* ---------- footer ------------------------------------------------ */
