@@ -8,6 +8,7 @@
  */
 
  (function($){
+
   $.fn.eActivistThermometer = function(options) {
     //default settings
     var settings = {
