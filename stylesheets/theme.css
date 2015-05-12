@@ -2730,6 +2730,9 @@ h6 {
 .en_right_wrapper div:first-child .box {
   margin-top: -1.38888889em;
 }
+form div:first-of-type .box {
+  margin-top: -1.38888889em;
+}
 /* ==================================================================
  * top to bottom styling
  * ================================================================== */
@@ -2756,13 +2759,14 @@ h6 {
 }
 /* ---------- pgbar ------------------------------------------------- */
 #pgbar {
-  float: right;
+  margin: 1.38888889em auto 0 auto;
 }
 #pgbar .thermometer {
   font-size: 1.22222222em;
   font-size: 1.22222222rem;
   line-height: 1.13636364em;
   margin-bottom: 1.13636364em;
+  padding: 0;
   font-family: "KG Small Town Southern Girl", cursive;
   font-weight: normal;
   font-style: normal;
@@ -2807,9 +2811,9 @@ h6 {
   position: absolute;
   color: #3E6FA2;
   text-indent: -9999px;
-  background: none;
   width: 6px;
   z-index: 10;
+  background: url('../images/pgbar_end.png') no-repeat top left;
 }
 #pgbar .thermometer .t_level {
   width: 0%;
@@ -2820,12 +2824,15 @@ h6 {
   margin: 3px 0;
   background: url('../images/pgbar_filling.png') no-repeat -30px top;
 }
-#pgbar .thermometer.somewhere-before .t_body .t_current {
-  background: url('../images/pgbar_end.png') no-repeat top left;
-}
 #pgbar .thermometer .t_target_pointer,
 #pgbar .thermometer .t_msg {
   color: black;
+}
+@media screen and (min-width: 700px) {
+  #pgbar {
+    margin: 0.2em 0 0 0;
+    float: right;
+  }
 }
 /* ---------- main -------------------------------------------------- */
 #main {
