@@ -1,0 +1,54 @@
+.en_left_wrapper,
+.en_right_wrapper {
+  float: left;
+  clear: left;
+}
+.twocolumn .en_left_wrapper {
+  float: left;
+  clear: left;
+  width: 56%;
+}
+.twocolumn .en_right_wrapper {
+  float: right;
+  clear: right;
+  width: 40%;
+}
+
+.middle {
+  width: 85%;
+}
+
+.box:after {
+  content: "";
+  display: block;
+  background: url('../images/arrow_scribble.png') no-repeat transparent;
+  position: absolute;
+  width: 60px;
+  height: 160px;
+  right: 100%;
+  bottom: -80px;
+}
+.no-backgroundsize .box:after {
+  right: 105%;
+}
+
+#header .middle {
+  padding-top: 0.69444444em;
+  padding-bottom: 0.69444444em;
+}
+#header:after {
+  background-position: 0 0;
+}
+
+.twocolumn .en_left_wrapper {
+  width: 48%;
+}
+
+.scribble {
+  display: block;
+}
+
+#footer {
+  padding-top: 2em;
+  margin-top: 2.77777778em;
+}
