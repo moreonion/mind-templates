@@ -57,7 +57,7 @@ $(window).load(function(){
     if (!self.is(':empty')) {
       self.closest('.eaFormField').addClass('validationError');
     }
-    if (!/[\S]/.test($('#eaerrors').html())) {
+    if (/[\S]/.test($('#eaerrors').html())) {
       $('#eaerrors').show();
     }
   });
