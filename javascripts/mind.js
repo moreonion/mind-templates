@@ -62,6 +62,11 @@ $(window).load(function(){
     }
   });
 
+  // mark first copybox of a column
+  $('.eaLeftColumnContent').first().addClass('first');
+  $('.eaRightColumnContent').first().addClass('first');
+  $('.eaFullWidthContent').first().addClass('first');
+
   // add "read more" link functionality
   $('.background-info-hidden').hide();
   $('.info-toggle').css('display', 'block');

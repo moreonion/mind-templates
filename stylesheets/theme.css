@@ -2726,11 +2726,9 @@ h6 {
 .no-multiplebgs .box.with-flower {
   background: url('../images/heading_bg_flower.png') no-repeat 97% 15% #844393;
 }
-.en_left_wrapper div:first-child .box,
-.en_right_wrapper div:first-child .box {
-  margin-top: -1.38888889em;
-}
-form div:first-of-type .box {
+.eaLeftColumnContent.first .box,
+.eaRightColumnContent.first .box,
+.eaFullWidthContent.first .box {
   margin-top: -1.38888889em;
 }
 /* ==================================================================
