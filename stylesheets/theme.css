@@ -839,6 +839,7 @@ h6 {
 /* ---------- pgbar ------------------------------------------------- */
 #pgbar {
   margin: 1.38888889em auto 0 auto;
+  width: 100%;
 }
 #pgbar .thermometer {
   font-size: 1.22222222em;
@@ -852,7 +853,6 @@ h6 {
   position: relative;
   color: white;
   width: 100%;
-  max-width: 420px;
 }
 #pgbar .thermometer .t_pre {
   width: 20px;
@@ -876,7 +876,6 @@ h6 {
   z-index: 100;
 }
 #pgbar .thermometer .t_body {
-  max-width: 420px;
   border: none;
   height: 48px;
   position: relative;
@@ -911,6 +910,13 @@ h6 {
   #pgbar {
     margin: 0.2em 0 0 0;
     float: right;
+    width: 40%;
+  }
+}
+@media screen and (min-width: 1150px) {
+  #pgbar {
+    margin: 0.2em 3.5% 0 0;
+    width: 36.5%;
   }
 }
 /* ---------- main -------------------------------------------------- */
@@ -1055,6 +1061,9 @@ h6 {
 .eaLeftColumnFiller,
 .eaLabelSpacer,
 br[clear="all"] {
+  display: none;
+}
+.eaMessageSignoffContainer {
   display: none;
 }
 /* ---------- buttons ----------------------------------------------- */
