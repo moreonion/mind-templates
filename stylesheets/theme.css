@@ -853,6 +853,7 @@ h6 {
   position: relative;
   color: white;
   width: 100%;
+  max-width: 440px;
 }
 #pgbar .thermometer .t_pre {
   width: 20px;
@@ -900,7 +901,8 @@ h6 {
   overflow: hidden;
   height: 42px;
   margin: 3px 0;
-  background: url('../images/pgbar_filling.png') no-repeat -30px top;
+  background: url('../images/pgbar_filling.png') repeat -30px top;
+  background-size: 470px auto;
 }
 #pgbar .thermometer .t_target_pointer,
 #pgbar .thermometer .t_msg {

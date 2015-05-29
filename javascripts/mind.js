@@ -155,8 +155,8 @@ $(window).load(function(){
   thConfig['$el'].eActivistThermometer({
     token: "c5ffb7dd-de95-4ed2-9371-55e11b7db1e0",
     campaignId: thConfig['campaignId'],
-    target: thConfig['target'],
-    initialValue: thConfig['start'],
+    target: parseInt(thConfig['target'], 10),
+    initialValue: parseInt(thConfig['start'], 10),
     service: thConfig['service'],
     targetDataColumn: 'participatingSupporters'
   });
