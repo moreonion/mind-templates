@@ -14,6 +14,8 @@ $(window).load(function(){
         var id = $(this).attr('id').match(/[0-9]+$/);
         $(this).before($('#right_wrapper' + id[0]));
       });
+    } else {
+      $('.eaSubmitResetButtonGroup').appendTo($('.en_left_wrapper').last());
     }
   }
 
