@@ -142,7 +142,7 @@
       opts = $.extend({}, opts, $input.data("picker-options"));
 
       var $parent = $input.closest("label"),
-        $label = $parent.length ? $parent.eq(0) : $("label[for='" + $input.attr("id") + "']"),
+        $label = $parent.length ? $parent.eq(0) : $("label[for='" + $input.attr("id").replace(/[\\"']/g, '\\$&') + "']"),
         type = $input.attr("type"),
         typeClass = "picker-" + (type === "radio" ? "radio" : "checkbox"),
         group = $input.attr("name"),
