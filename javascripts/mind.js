@@ -163,4 +163,61 @@ $(window).load(function(){
     targetDataColumn: 'participatingSupporters'
   });
 
+  // update/get/set functions for sessionStorage use with Leadpanel
+  function getLpPrefillStorage() {
+    var saved = JSON.parse(sessionStorage.getItem('leadpanel_prefill'));
+    if (saved === null) {
+      saved = {};
+    }
+    return saved;
+  }
+  function setLpPrefillStorage(newValues) {
+    var savedValues = JSON.parse(sessionStorage.getItem('leadpanel_prefill'));
+    if (savedValues === null) {
+      savedValues = {}
+    }
+    if (Object.keys(savedValues).length > 0) {
+      for (prop in newValues) {
+        savedValues[prop] = newValues[prop];
+      }
+    } else {
+      savedValues = newValues;
+    }
+    sessionStorage.setItem('leadpanel_prefill', JSON.stringify(savedValues));
+  }
+  function updateLpPrefillStorage(key, value) {
+    if (typeof key === 'undefined' || typeof value === 'undefined') {
+      throw new TypeError('Not enough arguments for updateLpPrefillStorage');
+    }
+    if (key === null) {
+      throw new TypeError('Key cannot be null for updateLpPrefillStorage');
+    }
+    var saved = getLpPrefillStorage();
+    saved[key + ''] = value + '';
+    setLpPrefillStorage(saved);
+  }
+
+  // initialize storage pre-checked checkboxes
+  $('input[type=checkbox]:checked').each(function(e) {
+    var v = $(this).val();
+    var name = $(this).attr('name');
+    if (typeof name === 'undefined' || name.length < 1) {
+      return;
+    }
+    updateLpPrefillStorage(name, v);
+  });
+
+  // on value changes update the storage
+  $('input, select, textarea').on('change', function(e) {
+    var v = $(this).val();
+    var name = $(this).attr('name');
+    if (typeof name === 'undefined' || name.length < 1) {
+      return;
+    }
+    if ($(this).attr('type') === 'checkbox' && !$(this).prop('checked')) {
+      v = ''; // unset value if unchecked, the html elements value for a
+              // checkbox stays the same, regardless the checked state
+    }
+    updateLpPrefillStorage(name, v);
+  });
 });
