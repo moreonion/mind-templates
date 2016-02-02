@@ -154,7 +154,7 @@ $(window).load(function(){
 
   // get pgbar config, initialize it
   var thConfig = thermoConfig('#pgbar .thermometer');
-  if (thConfig.length > 0) {
+  if (thConfig) {
     thConfig['$el'].eActivistThermometer({
       token: "c5ffb7dd-de95-4ed2-9371-55e11b7db1e0",
       campaignId: thConfig['campaignId'],
