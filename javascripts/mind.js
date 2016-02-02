@@ -154,14 +154,16 @@ $(window).load(function(){
 
   // get pgbar config, initialize it
   var thConfig = thermoConfig('#pgbar .thermometer');
-  thConfig['$el'].eActivistThermometer({
-    token: "c5ffb7dd-de95-4ed2-9371-55e11b7db1e0",
-    campaignId: thConfig['campaignId'],
-    target: parseInt(thConfig['target'], 10),
-    initialValue: parseInt(thConfig['start'], 10),
-    service: thConfig['service'],
-    targetDataColumn: 'participatingSupporters'
-  });
+  if (thConfig.length > 0) {
+    thConfig['$el'].eActivistThermometer({
+      token: "c5ffb7dd-de95-4ed2-9371-55e11b7db1e0",
+      campaignId: thConfig['campaignId'],
+      target: parseInt(thConfig['target'], 10),
+      initialValue: parseInt(thConfig['start'], 10),
+      service: thConfig['service'],
+      targetDataColumn: 'participatingSupporters'
+    });
+  }
 
   // update/get/set functions for sessionStorage use with Leadpanel
   function getLpPrefillStorage() {
