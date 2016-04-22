@@ -1020,6 +1020,7 @@ h6 {
 }
 .eaFormField,
 .eaSwitchSubjectContainer,
+.eaMessageSubjectContainer,
 .eaMessageContentContainer,
 .eaMessageSignoffContainer,
 .eaQuestionTextareaFormFieldContainer,
@@ -1030,6 +1031,7 @@ h6 {
 }
 .borderimage .eaFormField,
 .borderimage .eaSwitchSubjectContainer,
+.borderimage .eaMessageSubjectContainer,
 .borderimage .eaMessageContentContainer,
 .borderimage .eaMessageSignoffContainer,
 .borderimage .eaQuestionTextareaFormFieldContainer,
@@ -1045,6 +1047,7 @@ h6 {
 }
 .no-borderimage .eaFormField,
 .no-borderimage .eaSwitchSubjectContainer,
+.no-borderimage .eaMessageSubjectContainer,
 .no-borderimage .eaMessageContentContainer,
 .no-borderimage .eaMessageSignoffContainer,
 .no-borderimage .eaQuestionTextareaFormFieldContainer,
@@ -1552,8 +1555,15 @@ label,
 /* ==================================================================
  * contact lists
  * ================================================================== */
+.eaRecipientBlock br:first-child,
+.eaSenderBlock br:first-child {
+  display: none;
+}
 /* ---------- contact ----------------------------------------------- */
 /* select contact instruction text */
+.eaSelectContactInstruction {
+  display: block;
+}
 /* container for contacts */
 .eaContactsContainer {
   position: relative;
@@ -1628,7 +1638,8 @@ label,
 .eaContactDetailContainer {
   position: relative;
   padding-top: 10px;
-  padding-left: 5px;
+  padding-left: 3em;
+  padding-right: 1em;
   margin-top: 10px;
 }
 /* container for a contact's issue comments */
@@ -1649,20 +1660,30 @@ label,
 }
 /* contact party container */
 .eaContactPartyContainer {
-  margin-left: 200px;
-  top: -10px;
-  position: relative;
-  padding-left: 10px;
+  padding-left: 3em;
 }
 /* contact position container */
 .eaContactPositionContainer {
-  position: relative;
-  padding-left: 0px;
+  padding-left: 3em;
+}
+.eaContactTabsContainer,
+.eaContactTabs,
+.contactTabContent {
+  float: none!important;
+}
+.eaContactTabs {
+  margin-bottom: 16px;
+}
+.eaContactTabs a {
+  background-color: white;
+  border: 1px solid #d0d3d6;
 }
 .contactTabContent {
-  padding-left: 5px;
-  padding-bottom: 5px;
-  width: 95%;
+  top: 0!important;
+  padding: 10px!important;
+  width: auto!important;
+  border: 1px solid #d0d3d6 !important;
+  background: url('../images/bg.png') repeat #f4f6fa !important;
 }
 /* ---------- images ------------------------------------------------ */
 .ea-contact-bio-image {
