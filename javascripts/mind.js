@@ -52,15 +52,39 @@ $(window).load(function(){
     self.appendTo(field);
   });
 
-  // add class to field where error occured
-  // and show error message container
+// ---------- validations -------------------------------------------
+
+  // move error message below the label
+  $('.eaErrorMessage').each(function() {
+    var $self = $(this);
+    var $field = $self.siblings('.eaFormField');
+    $self.appendTo($field);
+  });
+
+  // add class to field, where error occured
   $(window).on('DOMSubtreeModified', '.eaErrorMessage', function(e) {
-    var self = $(e.target);
-    if (!self.is(':empty')) {
-      self.closest('.eaFormField').addClass('validationError');
+    var $self = $(e.target);
+    if (!$self.is(':empty')) {
+      $self.parent().not('form').addClass('validationError');
+    } else {
+      $self.parent().not('form').removeClass('validationError');
     }
-    if (/[\S]/.test($('#eaerrors').html())) {
-      $('#eaerrors').show();
+  });
+
+  // set visibility of error container on load
+  if ($('#eaerrors').text().trim() == "") {
+    $('#eaerrors').hide();
+  } else {
+    $('#eaerrors').show();
+  }
+
+  // remove #eaerrors if empty
+  $(window).on('DOMSubtreeModified', '#eaerrors', function(e) {
+    var $self = $(e.target);
+    if ($self.text().trim() == "") {
+      $self.hide();
+    } else {
+      $self.show();
     }
   });
 
